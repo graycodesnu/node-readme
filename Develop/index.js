@@ -1,34 +1,38 @@
 // TODO: Include packages needed for this application
-const inquirer = requirer('inquirer');
-const fs = requirer('fs');
+const inquirer = require('inquirer');
+const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = [
+inquirer
+ .prompt([
     {
         type: 'input',
-        name: 'introduction',
-        message: 'Introduction',
+        name:'introduction',
+        message: 'Introduce your project',
+    },
+    {
+        type:'input',
+        name: 'goal',
+        message: 'What was your goal?',
     },
     {
         type: 'input',
-        name: 'goals',
-        message: 'Goals',
+        name: 'result',
+        message: 'What was your result?',
     },
-    {
-        type: 'input',
-        name: 'results',
-        message: 'Results',
-    },
-];
-
+])
 
 // TODO: Create a function to write README file
-function writeToFile(filename, data) {
-    fs.writeFile(README, JSON.stringify(data, null), (err) =>
-    err ? console.log(error) : console.log(data)
+.then((data) => {
+    const filename = `${data.who.toLowerCase().split(' ').join('')}.json`;
+console.log(data)
+    fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+      err ? console.log(err) : console.log('Success!')
     );
-};
+  });
 
+
+  
 // TODO: Create a function to initialize app
 function init() {}
 
