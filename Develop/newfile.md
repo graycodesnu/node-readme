@@ -1,1 +1,0 @@
-"\n    ## Description\n    \"lajgoqwjire\"\n    ## Table of Contents\n    ## Installation\n    undefined\n    ## Usage \n    \"lsfjwo\"\n    ## License\n    undefined \n    ## Contributing \n    \"lasjfowurouw\"\n    ## Tests  \n    \"owehrtouhg\"\n\n    "

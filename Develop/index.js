@@ -1,91 +1,119 @@
 // TODO: Include packages needed for this application
-const inquirer = require('inquirer');
-const fs = require('fs');
+const inquirer = require("inquirer");
+const fs = require("fs");
 
 // TODO: Create an array of questions for user input
 inquirer
- .prompt([
+  .prompt([
     {
-        type: 'input',
-        name:'filename',
-        message: 'Enter your file name:',
+      type: "input",
+      name: "filename",
+      message: "Enter your file name:",
     },
     {
-        type:'input',
-        name: 'description',
-        message: 'Describe your project:',
+      type: "input",
+      name: "description",
+      message: "Describe your project:",
+    },
+    // {
+    //   type: "confirm",
+    //   name: "tableOfContents",
+    //   message: "Would you like to add a table of contents?",
+    // },
+    {
+      type: "input",
+      name: "usage",
+      message: "Add usage instructions:",
     },
     {
-        type: 'confirm',
-        name: 'table of contents',
-        message: 'Would you like to add a table of contents?',
+      type: "list",
+      name: "license",
+      message: "Choose a license:",
+      choices: ["MIT", "GPLv2", "Apache", "GPLv3", "BSD 3-clause", "Unlicense"],
     },
     {
-        type: 'input',
-        name: 'usage',
-        message: 'Add usage instructions:',
+      type: "input",
+      name: "contributing",
+      message: "Add instructions for potential contributors:",
     },
     {
-        type: 'input',
-        name: 'license',
-        message: 'Add license information',
+      type: "input",
+      name: "tests",
+      message: "Describe how a user can test your application:",
     },
     {
-        type: 'input',
-        name: 'contributing',
-        message: 'Add instructions for potential contributors:',
+      type: "input",
+      name: "github",
+      message: "Enter your GitHub username:",
     },
     {
-        type: 'input',
-        name: 'tests',
-        message: 'Describe how a user can test your application:',
+      type: "input",
+      name: "emailAddress",
+      message: "Enter your email address:",
     },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'Enter your GitHub username:',
-    },
-    {
-        type: 'input',
-        name: 'email address',
-        message: 'Enter your email address:',
-    },
-])
+  ])
 
-// TODO: Create a function to write README file
-.then((data) => {
-    
-// TODO: Create a readme page    
-    const readmeSections = `
+  // TODO: Create a function to write README file
+  .then((data) => {
+    // TODO: Create a readme page
+    const readmeSections = ({
+      filename,
+      description,
+      usage,
+      license,
+      contributing,
+      tests,
+      github,
+      emailAddress,
+    }) =>
+      `      
+    # ${filename}
+
     ## Description
-    ${JSON.stringify(data.description)}
-    ## Table of Contents
-    ## Installation
-    ${JSON.stringify(data.installation)}
-    ## Usage 
-    ${JSON.stringify(data.usage)}
-    ## License
-    ${JSON.stringify(data.installation)} 
-    ## Contributing 
-    ${JSON.stringify(data.contributing)}
-    ## Tests  
-    ${JSON.stringify(data.tests)}
+    ${description}
 
-    `
+    ## Table of Contents
+    * [Installation](#installation)
+    * [Usage](#usage)
+    * [License](#license)
+    * [Contributors](#contributors)
+    * [Tests](#tests)
+    * [Questions](#questions)
+
+    ## Installation
+    ${installation}
     
-    const filename = `${data.filename.toLowerCase().split(' ').join('')}.md`;
-console.log(data)
-    fs.writeFile(filename, JSON.stringify(readmeSections, null, '\t'), (err) =>
-      err ? console.log(err) : console.log('Success!')
+    ## Usage 
+    ${usage}
+   
+    ## License
+    
+    This application is covered under the [${license}] license. 
+   
+    ## Contributing 
+    ${contributing}
+    
+    ## Tests  
+    ${tests}
+
+    ## Questions
+    ${github}
+    ${emailAddress}
+
+    `;
+
+    const filename = `${data.filename.toLowerCase().split(" ").join("")}.md`;
+    // console.log(data)
+    fs.writeFile(filename, (readmeSections, null, "\t"), (err) =>
+      err ? console.log(err) : console.log("Success!")
     );
   });
 
-// TODO: Create a function to append section titles to new readme 
+// TODO: Create a function to append section titles to new readme
 
-// TODO: Create a function append inputs to corresponding section 
+// TODO: Create a function append inputs to corresponding section
 
-
-// TODO: Create a function that links the 
+// TODO: Create a function that links the
 
 // TODO: Create a function to initialize app
 function init() {}
