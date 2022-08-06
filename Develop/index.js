@@ -7,24 +7,44 @@ inquirer
  .prompt([
     {
         type: 'input',
-        name:'introduction',
-        message: 'Introduce your project',
+        name:'filename',
+        message: 'Enter your file name:',
     },
     {
         type:'input',
-        name: 'goal',
-        message: 'What was your goal?',
+        name: 'description',
+        message: 'Describe your project:',
     },
     {
         type: 'input',
-        name: 'result',
-        message: 'What was your result?',
+        name: 'table of contents',
+        message: 'Enter your table of contents:',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Usage:',
+    },
+    {
+        type: 'input',
+        name: 'license',
+        message: 'License Information:',
+    },
+    {
+        type: 'input',
+        name: 'contributing',
+        message: 'Contributing:',
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Tests:',
     },
 ])
 
 // TODO: Create a function to write README file
 .then((data) => {
-    const filename = `${data.who.toLowerCase().split(' ').join('')}.json`;
+    const filename = `${data.filename.toLowerCase().split(' ').join('')}.md`;
 console.log(data)
     fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
       err ? console.log(err) : console.log('Success!')
@@ -32,7 +52,7 @@ console.log(data)
   });
 
 
-  
+
 // TODO: Create a function to initialize app
 function init() {}
 
