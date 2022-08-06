@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { json } = require("stream/consumers");
 
 // TODO: Create an array of questions for user input
 inquirer
@@ -15,11 +16,11 @@ inquirer
       name: "description",
       message: "Describe your project:",
     },
-    // {
-    //   type: "confirm",
-    //   name: "tableOfContents",
-    //   message: "Would you like to add a table of contents?",
-    // },
+    {
+        type: "input",
+        name: "installation",
+        message: "How can a user install your app?",
+      },
     {
       type: "input",
       name: "usage",
@@ -29,7 +30,14 @@ inquirer
       type: "list",
       name: "license",
       message: "Choose a license:",
-      choices: ["MIT", "GPLv2", "Apache", "GPLv3", "BSD 3-clause", "Unlicense"],
+      choices: [
+        "MIT",
+        "GPLv2",
+        "Apache",
+        "GPLv3",
+        "BSD 3-clause",
+        "Unlicensed",
+      ],
     },
     {
       type: "input",
@@ -53,61 +61,66 @@ inquirer
     },
   ])
 
-  // TODO: Create a function to write README file
-  .then((data) => {
-    // TODO: Create a readme page
-    const readmeSections = ({
-      filename,
-      description,
-      usage,
-      license,
-      contributing,
-      tests,
-      github,
-      emailAddress,
-    }) =>
-      `      
-    # ${filename}
 
-    ## Description
-    ${description}
+// TODO: Create a readme page
+.then((data) => {
 
-    ## Table of Contents
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributors](#contributors)
-    * [Tests](#tests)
-    * [Questions](#questions)
+const readmeSections = ({
+        filename,
+        description,
+        installation,
+        usage,
+        license,
+        contributing,
+        tests,
+        github,
+        emailAddress,
+      }) =>
+      `
+# ${filename}
+  
+## Description
+${description}
+  
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [License](#license)
+* [Contributors](#contributors)
+* [Tests](#tests)
+* [Questions](#questions)
+  
+## Installation
+${installation}
+      
+## Usage 
+${usage}
+     
+## License
 
-    ## Installation
-    ${installation}
-    
-    ## Usage 
-    ${usage}
-   
-    ## License
-    
-    This application is covered under the [${license}] license. 
-   
-    ## Contributing 
-    ${contributing}
-    
-    ## Tests  
-    ${tests}
+This application is covered under the [${license}] license. 
+     
+## Contributing 
+${contributing}
+      
+## Tests  
+${tests}
+  
+## Questions
+${github}
+${emailAddress}
+  
+        `
 
-    ## Questions
-    ${github}
-    ${emailAddress}
+// TODO: Create a function to write README file
 
-    `;
-
+    let readmeSectionsContent = readmeSections(data);
     const filename = `${data.filename.toLowerCase().split(" ").join("")}.md`;
-    // console.log(data)
-    fs.writeFile(filename, (readmeSections, null, "\t"), (err) =>
-      err ? console.log(err) : console.log("Success!")
+    console.log(data)
+    fs.writeFile(filename, JSON.stringify(readmeSectionsContent, null, "\t"),
+    (err) => err ? console.log(err) : console.log("Success!")
     );
-  });
+});
 
 // TODO: Create a function to append section titles to new readme
 
