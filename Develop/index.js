@@ -86,7 +86,7 @@ ${description}
 * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-* [Contributors](#contributors)
+* [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
   
@@ -107,8 +107,7 @@ ${contributing}
 ${tests}
   
 ## Questions
-${github}
-${emailAddress}
+Please reach out to me with questions or comments. My GitHub user name is ${github}. My email address is ${emailAddress}.
   
         `
 
@@ -117,8 +116,9 @@ ${emailAddress}
     let readmeSectionsContent = readmeSections(data);
     const filename = `${data.filename.toLowerCase().split(" ").join("")}.md`;
     console.log(data)
-    fs.writeFile(filename, JSON.stringify(readmeSectionsContent, null, "\t"),
-    (err) => err ? console.log(err) : console.log("Success!")
+    fs.writeFile(filename, readmeSectionsContent, null,
+    (err) => 
+    err ? console.log(err) : console.log("Success!")
     );
 });
 
@@ -128,7 +128,7 @@ ${emailAddress}
 
 // TODO: Create a function that links the
 
-// TODO: Creat a function that renders a badge for the licensing
+// TODO: Create a function that renders a badge for the licensing
 function renderLicenseBadge(license) {
     switch (license) {
       case "MIT":
