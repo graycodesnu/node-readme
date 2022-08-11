@@ -78,7 +78,9 @@ const readmeSections = ({
       }) =>
       `
 # ${filename}
-  
+
+# ${renderLicenseBadge(license)}
+
 ## Description
 ${description}
   
@@ -98,7 +100,7 @@ ${usage}
      
 ## License
 
-This application is covered under the [${license}](${renderLicenseBadge(license)}) license. 
+This application is covered under the [${license}] ${renderLicenseBadge(license)} license. 
      
 ## Contributing 
 ${contributing}
@@ -107,7 +109,7 @@ ${contributing}
 ${tests}
   
 ## Questions
-Please reach out to me with questions or comments. My GitHub user name is ${github}. My email address is ${emailAddress}.
+Please reach out to me with questions or comments. My GitHub user name is [${github}](https://github.com/${github}). My email address is ${emailAddress}.
   
         `
 
