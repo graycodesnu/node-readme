@@ -9,7 +9,7 @@ inquirer
     {
       type: "input",
       name: "filename",
-      message: "Enter your file name:",
+      message: "Enter your project name:",
     },
     {
       type: "input",
@@ -153,7 +153,10 @@ function renderLicenseBadge(license) {
 
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+
+
+}
 
 // Function call to initialize app
 init();
