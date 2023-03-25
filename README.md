@@ -1,8 +1,9 @@
 # node-readme
 
 ## Introduction
-This project is a result of our bootcamp's week 9 homework assignment. Students were expected to create a README.md file generator using Node.js The project repository can be found [here](https://github.com/graycodesnu/node-readme) and the demo video can be found [here](*****)
-![screenshot]()
+This project is a result of our bootcamp's week 9 homework assignment. Students were expected to create a README.md file generator using Node.js. The project repository can be found [here](https://github.com/graycodesnu/node-readme) and the demo video can be found [here](https://drive.google.com/file/d/1St-Si8Wu9aCa9QI1vvXhKOsWRZptzbra/view).
+
+![]('../../assets/screenshot.png)
 
 ## Goals 
 The goal of this assignment was to create a README.md generator that would meet the below criteria:
